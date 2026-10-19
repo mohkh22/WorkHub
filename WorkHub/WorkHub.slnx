@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="WorkHub.Application/WorkHub.Application.csproj" Id="02e135eb-b639-4df1-bf3e-ffc7009fdcb3" />
+  <Project Path="WorkHub.Domain/WorkHub.Domain.csproj" Id="58453729-7c1c-4754-9998-3fcb6c473998" />
+  <Project Path="WorkHub.Infrastructure/WorkHub.Infrastructure.csproj" Id="ace2a6e4-51c9-4de6-87d2-b0bc76509878" />
+  <Project Path="WorkHub.Web/WorkHub.Web.csproj" Id="04c6844a-1642-4751-9354-fc4e3e02f1cd" />
+</Solution>

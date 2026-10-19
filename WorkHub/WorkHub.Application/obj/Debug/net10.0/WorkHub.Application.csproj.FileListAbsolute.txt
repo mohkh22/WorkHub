@@ -1,0 +1,15 @@
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\bin\Debug\net10.0\WorkHub.Application.deps.json
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\bin\Debug\net10.0\WorkHub.Application.dll
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\bin\Debug\net10.0\WorkHub.Application.pdb
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\bin\Debug\net10.0\WorkHub.Domain.dll
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\bin\Debug\net10.0\WorkHub.Domain.pdb
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.csproj.AssemblyReference.cache
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.GeneratedMSBuildEditorConfig.editorconfig
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.AssemblyInfoInputs.cache
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.AssemblyInfo.cs
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.csproj.CoreCompileInputs.cache
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub..13EAAFE0.Up2Date
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.dll
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\refint\WorkHub.Application.dll
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.pdb
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\ref\WorkHub.Application.dll
