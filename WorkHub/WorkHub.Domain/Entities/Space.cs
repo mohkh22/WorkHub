@@ -2,7 +2,7 @@
 
 namespace WorkHub.Domain.Entities
 {
-    public class Space
+    public class Space:ISoftDeletable
     {
 
         public Guid Id { get; private set; }
@@ -129,5 +129,6 @@ namespace WorkHub.Domain.Entities
                 this.IsDeleted = false;
             }
         }
+
     }
 }

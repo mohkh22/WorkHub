@@ -167,5 +167,6 @@ F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHu
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
-F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\bin\Debug\net10.0\System.Security.Cryptography.Pkcs.dll
-F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Security.Cryptography.Pkcs.dll
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\obj\Debug\net10.0\WorkHub.Web.RazorAssemblyInfo.cache
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\obj\Debug\net10.0\WorkHub.Web.RazorAssemblyInfo.cs
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\obj\Debug\net10.0\WorkHub.Web.sourcelink.json

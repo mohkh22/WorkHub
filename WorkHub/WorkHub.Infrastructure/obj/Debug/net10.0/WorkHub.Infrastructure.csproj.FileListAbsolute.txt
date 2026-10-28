@@ -17,3 +17,4 @@ F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHu
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Infrastructure\obj\Debug\net10.0\WorkHub.Infrastructure.pdb
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Infrastructure\obj\Debug\net10.0\WorkHub.Infrastructure.genruntimeconfig.cache
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Infrastructure\obj\Debug\net10.0\ref\WorkHub.Infrastructure.dll
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Infrastructure\obj\Debug\net10.0\WorkHub.Infrastructure.sourcelink.json

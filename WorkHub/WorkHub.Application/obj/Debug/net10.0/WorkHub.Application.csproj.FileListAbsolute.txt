@@ -13,3 +13,4 @@ F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHu
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\refint\WorkHub.Application.dll
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.pdb
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\ref\WorkHub.Application.dll
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Application\obj\Debug\net10.0\WorkHub.Application.sourcelink.json

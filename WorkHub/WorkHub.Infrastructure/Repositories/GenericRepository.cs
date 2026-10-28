@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WorkHub.Application.Interfaces;
+using WorkHub.Domain.Entities;
 using WorkHub.Infrastructure.Data;
 
 namespace WorkHub.Infrastructure.Repositories
@@ -21,12 +22,23 @@ namespace WorkHub.Infrastructure.Repositories
         public async Task Delete(TKey id)
         {
             T? entity = await _dbContext.Set<T>().FindAsync(id);
+            
             if(entity != null)
             {
-                _dbContext.Set<T>().Remove(entity);
-            }
+                if(entity is ISoftDeletable softDeletable)
+                {
+                    softDeletable.SoftDelete();
+                }
+                else
+                {
+                    throw new NotSupportedException(); 
+                }
 
-          return ;
+            }
+            else
+            {
+                throw new Exception("Enitity not found"); 
+            }
         }
 
         public async Task<IEnumerable<T>> GetAllAsync(int page = 1, int pageSize = 10)
@@ -35,12 +47,16 @@ namespace WorkHub.Infrastructure.Repositories
             {
                 throw new ArgumentException("Page and pageSize must be greater than zero.");
             }
-            return await _dbContext.Set<T>().Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            else
+            {
+               
+              return await _dbContext.Set<T>().Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            }
         }
 
         public async Task<T?> GetByIdAsync(TKey id)
         {
-          T? result = await _dbContext.Set<T>().FindAsync(id);
+          T? result = await _dbContext.Set<T>().FirstOrDefaultAsync(entity=>EF.Property<TKey>(entity,"Id")!.Equals(id));
             return result;
         }
 

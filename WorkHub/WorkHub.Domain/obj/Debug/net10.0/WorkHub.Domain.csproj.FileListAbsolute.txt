@@ -9,3 +9,5 @@ F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHu
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Domain\obj\Debug\net10.0\refint\WorkHub.Domain.dll
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Domain\obj\Debug\net10.0\WorkHub.Domain.pdb
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Domain\obj\Debug\net10.0\ref\WorkHub.Domain.dll
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Domain\obj\Debug\net10.0\WorkHub.Domain.sourcelink.json
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Domain\obj\Debug\net10.0\WorkHub..815FA966.Up2Date

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorkHub.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bed56bcdf68c152cc0dae2b59e9f79f75ed3ea08")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorkHub.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorkHub.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

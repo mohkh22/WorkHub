@@ -1,0 +1,37 @@
+﻿@using WorkHub.Application.Dtos.Space
+@model IEnumerable<SpaceResponse>
+@{
+    ViewBag.Title = "Index"; 
+
+}
+
+<table>
+    <tr>
+        <th>Space Number </th>
+        <th>Description </th>
+        <th>Status </th>
+        <th>Type </th>
+        <th>Min Capacity </th>
+        <th>Max Capacity </th>
+        <th>Hourly Price  </th>
+        <th>Daily Price  </th>
+        <th>Actions</th>
+    </tr>
+        @foreach(var item in Model)
+        {
+    <tr>
+            <td>@item.SpaceNumber</td>
+            <td>@item.Description</td>
+            <td>@item.Status</td>
+            <td>@item.Type</td>
+            <td>@item.MinCapacity</td>
+            <td>@item.MaxCapacity</td>
+            <td>@item.HourlyPrice</td>
+            <td>@item.DailyPrice</td>
+            <td>
+              <a asp-controller="Spaces" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>    
+              <a asp-controller="Spaces" asp-action="Delete" asp-route-Id="@item.Id">Delete</a>    
+            </td>
+ </tr>
+        }
+</table>

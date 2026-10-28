@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Linq.Expressions;
 using WorkHub.Domain.Entities;
 
 namespace WorkHub.Infrastructure.Data
@@ -15,6 +17,18 @@ namespace WorkHub.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+           foreach(var item in modelBuilder.Model.GetEntityTypes())
+            {
+                if(typeof(ISoftDeletable).IsAssignableFrom(item.ClrType))
+                {
+                    ParameterExpression parameterExpression = Expression.Parameter(item.ClrType,"x");
+
+                    var property = Expression.Property(parameterExpression, "IsDeleted");
+                    var ExpressionNot = Expression.Not(property);
+                    var lamada = Expression.Lambda(ExpressionNot, parameterExpression); 
+                    modelBuilder.Entity(item.ClrType).HasQueryFilter(lamada); 
+                }
+            }
             base.OnModelCreating(modelBuilder);
         }
     }

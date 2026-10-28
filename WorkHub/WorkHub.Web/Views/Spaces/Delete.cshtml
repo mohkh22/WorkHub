@@ -1,0 +1,12 @@
+﻿@using WorkHub.Application.Dtos.Space
+@model SpaceResponse
+@{
+    ViewBag.Title="Delete"; 
+}
+<form asp-action="DeleteAsync" asp-controller="Spaces" method="post">
+
+    <h2>Do you want to Delete space of Number (@Model.SpaceNumber)</h2>
+    <button type="submit" asp-route-id="@Model.Id">Yes</button>
+    <a asp-action="Index" asp-controller="Spaces">No</a>
+</form>
+
