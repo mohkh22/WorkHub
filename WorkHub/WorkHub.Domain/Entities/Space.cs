@@ -114,6 +114,10 @@ namespace WorkHub.Domain.Entities
             this.SpaceNumber = spaceNumber;
         }
 
+        public void UpdateType(SpaceType type)
+        {
+            this.Type = type; 
+        }
         public void SoftDelete()
         {
             if (!this.IsDeleted)

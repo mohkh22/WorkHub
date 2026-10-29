@@ -83,5 +83,45 @@ namespace WorkHub.Web.Controllers
             await _spaceService.SoftDeleteAsync(id);
             return RedirectToAction("Index"); 
         }
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> Update(Guid id)
+        { 
+            var space = await _spaceService.GetSpaceById(id);
+            List<SelectListItem> selectLists = new List<SelectListItem>();
+
+            foreach (var item in Enum.GetNames(typeof(SpaceType)))
+            {
+                if (item == space.Type.ToString())
+                {
+                    selectLists.Add(new SelectListItem { Text = item, Value = item, Selected = true });
+
+                }
+                else
+                {
+                    selectLists.Add(new SelectListItem { Text = item, Value = item });
+
+                }
+            }
+            ViewBag.SpaceTypeSelectList = selectLists;
+            ViewBag.SpaceId = id; 
+            return View(space.ToUpdateSpaceRequest()); 
+
+        }
+
+
+        [HttpPost]
+        [Route("[action]")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(Guid id , UpdateSpaceRequest updateSpaceRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(updateSpaceRequest); 
+            }
+            await _spaceService.UpdateSpaceAsync(id, updateSpaceRequest);
+            return RedirectToAction("Index"); 
+        }
     }
 }

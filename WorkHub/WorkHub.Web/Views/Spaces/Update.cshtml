@@ -1,0 +1,27 @@
+﻿@using WorkHub.Application.Dtos.Space
+@model UpdateSpaceRequest
+@{
+    ViewBag.Title = "Update Space"; 
+}
+
+<form asp-controller="Spaces" asp-action="Update" method="post">
+    @Html.AntiForgeryToken();
+    <input value="@ViewBag.SpaceId" name="id" hidden="hidden" />
+    <input asp-for="SpaceNumber"  />
+    <textarea asp-for="Description" ></textarea>
+
+    <select asp-for="Type" asp-items="ViewBag.SpaceTypeSelectList">
+        <option value="" selected>Select Space Type</option>
+    </select>
+
+    <input asp-for="MinCapacity" />
+    <input asp-for="MaxCapacity" />
+    <input asp-for="HourlyPrice" />
+    <input asp-for="DailyPrice" name="DailyPrice" />
+
+
+    <button type="submit" >Save</button>
+
+    <div asp-validation-summary="All"></div>
+
+</form>

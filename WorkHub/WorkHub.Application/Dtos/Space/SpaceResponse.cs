@@ -41,6 +41,25 @@ namespace WorkHub.Application.Dtos.Space
                 DailyPrice = space.DailyPrice
             };
         }
+
+        public static UpdateSpaceRequest ToUpdateSpaceRequest(this SpaceResponse spaceResponse)
+        {
+            if(spaceResponse is null)
+                throw new ArgumentNullException(nameof(spaceResponse));
+
+            return new UpdateSpaceRequest
+            {
+                SpaceNumber = spaceResponse.SpaceNumber,
+                Description= spaceResponse.Description,
+                Type = spaceResponse.Type, 
+                MinCapacity = spaceResponse.MinCapacity,
+                MaxCapacity=spaceResponse.MaxCapacity,
+                HourlyPrice=spaceResponse.HourlyPrice,
+                DailyPrice=spaceResponse.DailyPrice
+
+
+            }; 
+        }
     }
 
 }

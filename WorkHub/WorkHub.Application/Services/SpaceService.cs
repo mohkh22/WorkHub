@@ -56,5 +56,24 @@ namespace WorkHub.Application.Services
             space.SoftDelete();
             await _unitOfWork.SaveChangesAsync(); 
         }
+
+        public async Task UpdateSpaceAsync(Guid id, UpdateSpaceRequest updateSpaceRequest)
+        {
+            if (id == Guid.Empty)
+                throw new ArgumentException("Enter correct Id");
+            else
+            {
+                var space = await _genericRepository.GetByIdAsync(id);
+                if (space is null)
+                    throw new KeyNotFoundException("Space Not Found");
+
+                space.UpdateDetails(updateSpaceRequest.SpaceNumber, updateSpaceRequest.Description);
+                space.UpdateCapacity(updateSpaceRequest.MinCapacity, updateSpaceRequest.MaxCapacity);
+                space.UpdatePricing(updateSpaceRequest.HourlyPrice, updateSpaceRequest.DailyPrice);
+                space.UpdateType(updateSpaceRequest.Type);
+
+                await _unitOfWork.SaveChangesAsync(); 
+            }
+        }
     }
 }

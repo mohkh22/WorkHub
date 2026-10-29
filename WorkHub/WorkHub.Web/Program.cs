@@ -21,9 +21,14 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 app.UseRouting();
-app.UseStaticFiles(); 
-
+app.UseStaticFiles();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=spaces}/{action=Index}/{id?}");
 
 
 app.Run();
