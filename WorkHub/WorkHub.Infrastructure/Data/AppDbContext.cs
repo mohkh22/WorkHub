@@ -14,6 +14,8 @@ namespace WorkHub.Infrastructure.Data
         }
 
         public DbSet<Space> Spaces { get; set; } 
+        public DbSet<Feature> Features { get; set; } 
+        public DbSet<SpaceFeature> SpaceFeatures { get; set; } 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);

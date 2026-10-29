@@ -6,6 +6,7 @@
         public string Name { get; private set; } = null!; 
         public string? Description { get; private set; }
         public bool IsDeleted { get; private set; }
+        public ICollection<SpaceFeature> SpaceFeatures { get; private set; } = new List<SpaceFeature>(); 
 
         private Feature(string name,string? description)
         {

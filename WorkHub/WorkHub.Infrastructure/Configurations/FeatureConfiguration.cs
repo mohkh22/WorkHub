@@ -10,8 +10,8 @@ namespace WorkHub.Infrastructure.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
-            builder.HasIndex(x => x.Name).IsUnique(); 
-
+            builder.HasIndex(x => x.Name).IsUnique();
+            builder.Property(x => x.IsDeleted).HasDefaultValue(false);
         }
     }
 }

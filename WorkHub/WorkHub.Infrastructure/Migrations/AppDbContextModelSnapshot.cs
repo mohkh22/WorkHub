@@ -22,6 +22,33 @@ namespace WorkHub.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("WorkHub.Domain.Entities.Feature", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Features");
+                });
+
             modelBuilder.Entity("WorkHub.Domain.Entities.Space", b =>
                 {
                     b.Property<Guid>("Id")
@@ -84,6 +111,77 @@ namespace WorkHub.Infrastructure.Migrations
 
                             t.HasCheckConstraint("ck_space_min_capacity", "[MinCapacity] > 0");
                         });
+                });
+
+            modelBuilder.Entity("WorkHub.Domain.Entities.SpaceFeature", b =>
+                {
+                    b.Property<Guid>("SpaceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FeatureId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<Guid>("FeatureId1")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SpaceId1")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("SpaceId", "FeatureId");
+
+                    b.HasIndex("FeatureId");
+
+                    b.HasIndex("FeatureId1");
+
+                    b.HasIndex("SpaceId1");
+
+                    b.ToTable("SpaceFeatures");
+                });
+
+            modelBuilder.Entity("WorkHub.Domain.Entities.SpaceFeature", b =>
+                {
+                    b.HasOne("WorkHub.Domain.Entities.Feature", null)
+                        .WithMany("SpaceFeatures")
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("WorkHub.Domain.Entities.Feature", "Feature")
+                        .WithMany()
+                        .HasForeignKey("FeatureId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WorkHub.Domain.Entities.Space", null)
+                        .WithMany("SpaceFeatures")
+                        .HasForeignKey("SpaceId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("WorkHub.Domain.Entities.Space", "Space")
+                        .WithMany()
+                        .HasForeignKey("SpaceId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+
+                    b.Navigation("Space");
+                });
+
+            modelBuilder.Entity("WorkHub.Domain.Entities.Feature", b =>
+                {
+                    b.Navigation("SpaceFeatures");
+                });
+
+            modelBuilder.Entity("WorkHub.Domain.Entities.Space", b =>
+                {
+                    b.Navigation("SpaceFeatures");
                 });
 #pragma warning restore 612, 618
         }
