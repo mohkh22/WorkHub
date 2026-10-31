@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Delete Feature";
+}
+
+<form asp-action="DeleteAsync" asp-controller="Feature" method="post">
+
+    <h2>Do you want to Delete space of Number (@Model.Name)</h2>
+    <button type="submit" asp-route-id="@Model.Id">Yes</button>
+    <a asp-action="Index" asp-controller="Feature">No</a>
+</form>
+

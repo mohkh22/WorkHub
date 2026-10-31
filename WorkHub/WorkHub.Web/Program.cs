@@ -14,6 +14,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericReposito
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
 builder.Services.AddScoped<ISpaceService, SpaceService>();
+builder.Services.AddScoped<IFeatureService, FeatureService>();
 
 
 builder.Services.AddControllersWithViews();

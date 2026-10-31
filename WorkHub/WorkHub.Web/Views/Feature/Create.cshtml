@@ -1,0 +1,19 @@
+﻿@using WorkHub.Application.Dtos.Feature
+@model AddFeatureRequest
+
+@{
+    ViewBag.Title = "Add Feature";
+}
+
+<form asp-controller="Feature" asp-action="Create" method="post">
+    @Html.AntiForgeryToken();
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <label asp-for="Description"></label>
+    <textarea asp-for="Description"></textarea>
+
+    <button type="submit">Save</button>
+
+    <div asp-validation-summary="All"></div>
+
+</form>
