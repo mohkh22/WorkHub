@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WorkHub.Application.Dtos.Space;
 using WorkHub.Application.Interfaces;
+using WorkHub.Application.ViewModels;
+using WorkHub.Domain.Entities;
 using WorkHub.Domain.Enums;
 
 namespace WorkHub.Web.Controllers
@@ -10,10 +12,12 @@ namespace WorkHub.Web.Controllers
     public class SpacesController : Controller
     {
         private readonly ISpaceService _spaceService;
+        private readonly IFeatureService _featureService;
 
-        public SpacesController(ISpaceService spaceService)
+        public SpacesController(ISpaceService spaceService, IFeatureService featureService)
         {
             _spaceService = spaceService;
+            _featureService = featureService;
         }
 
 
@@ -27,7 +31,7 @@ namespace WorkHub.Web.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             List<SelectListItem> selectLists = new List<SelectListItem>();
 
@@ -38,13 +42,16 @@ namespace WorkHub.Web.Controllers
 
             ViewBag.SpaceTypeSelectList = selectLists;
 
-            return View();
+            CreateSpaceViewModel createSpaceViewModel = new CreateSpaceViewModel();
+            createSpaceViewModel.FeatureResponses = await _featureService.GetAllAsync(); 
+
+            return View(createSpaceViewModel);
         }
 
         [HttpPost]
         [Route("[action]")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(AddSpaceRequest request)
+        public async Task<IActionResult> Create(CreateSpaceViewModel request)
         {
             if(!ModelState.IsValid)
             {
@@ -56,10 +63,12 @@ namespace WorkHub.Web.Controllers
                 }
 
                 ViewBag.SpaceTypeSelectList = selectLists;
+                request.FeatureResponses = await _featureService.GetAllAsync();
                 return View(request);
             }
 
-            Guid spaceId = await _spaceService.AddSpaceAsync(request);
+            await _spaceService.AddSpaceAsync(request.AddSpaceRequest);
+
 
             return RedirectToAction("Index"); 
         }
@@ -88,7 +97,7 @@ namespace WorkHub.Web.Controllers
         [Route("[action]")]
         public async Task<IActionResult> Update(Guid id)
         { 
-            var space = await _spaceService.GetSpaceById(id);
+            var space = await _spaceService.GetSpaceById(id, nameof(Space.SpaceFeatures));
             List<SelectListItem> selectLists = new List<SelectListItem>();
 
             foreach (var item in Enum.GetNames(typeof(SpaceType)))
@@ -106,7 +115,12 @@ namespace WorkHub.Web.Controllers
             }
             ViewBag.SpaceTypeSelectList = selectLists;
             ViewBag.SpaceId = id; 
-            return View(space.ToUpdateSpaceRequest()); 
+
+            UpdateSpaceViewModel updateSpaceViewModel = new UpdateSpaceViewModel();
+            updateSpaceViewModel.UpdateSpaceRequest = space.ToUpdateSpaceRequest();
+            updateSpaceViewModel.FeatureResponses = await _featureService.GetAllAsync();
+
+            return View(updateSpaceViewModel); 
 
         }
 
@@ -114,14 +128,39 @@ namespace WorkHub.Web.Controllers
         [HttpPost]
         [Route("[action]")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(Guid id , UpdateSpaceRequest updateSpaceRequest)
+        public async Task<IActionResult> Update(Guid id , UpdateSpaceViewModel updateSpaceViewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(updateSpaceRequest); 
+                List<SelectListItem> selectLists = new List<SelectListItem>();
+
+                foreach (var item in Enum.GetNames(typeof(SpaceType)))
+                {
+                    if (item == updateSpaceViewModel.UpdateSpaceRequest.Type.ToString())
+                    {
+                        selectLists.Add(new SelectListItem { Text = item, Value = item, Selected = true });
+
+                    }
+                    else
+                    {
+                        selectLists.Add(new SelectListItem { Text = item, Value = item });
+
+                    }
+                }
+                updateSpaceViewModel.FeatureResponses = await _featureService.GetAllAsync();
+                ViewBag.SpaceTypeSelectList = selectLists;
+                return View(updateSpaceViewModel); 
             }
-            await _spaceService.UpdateSpaceAsync(id, updateSpaceRequest);
+            await _spaceService.UpdateSpaceAsync(id, updateSpaceViewModel.UpdateSpaceRequest);
             return RedirectToAction("Index"); 
+        }
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var space = await _spaceService.GetSpaceById(id, "SpaceFeatures.Feature");
+            return View(space);
         }
     }
 }

@@ -1,0 +1,20 @@
+﻿@using WorkHub.Application.Dtos.Space
+@model SpaceResponse
+@{
+    ViewBag.Title = "Space Details";
+}
+
+
+<Label>Space Number:</Label> <span>@Model.SpaceNumber</span> <hr />
+<label>Description:</label> <span>@Model.Description</span> <hr />
+<label>Status:</label> <span>@Model.Status</span>           <hr />
+<label>Type:</label> <span>@Model.Type</span>               <hr />
+<label>MinCapacity:</label> <span>@Model.MinCapacity</span> <hr />
+<label>MaxCapacity:</label> <span>@Model.MaxCapacity</span> <hr />
+<label>HourlyPrice:</label> <span>@Model.HourlyPrice</span> <hr />
+<label>DailyPrice:</label> <span>@Model.DailyPrice</span>   <hr />
+<label>Features</label>
+@foreach (var featureName in Model.FeatureNames)
+{
+    <span>@featureName  </span> 
+}

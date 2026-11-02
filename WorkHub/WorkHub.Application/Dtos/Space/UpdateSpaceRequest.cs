@@ -26,5 +26,7 @@ namespace WorkHub.Application.Dtos.Space
         [Required(ErrorMessage = "Daily price is required.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Daily price must be greater than 0.")]
         public decimal DailyPrice { get; set; }
+
+        public List<Guid> FeatureIds { get; set; } = new List<Guid>();
     }
 }

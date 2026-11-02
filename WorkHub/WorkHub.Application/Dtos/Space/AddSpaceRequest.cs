@@ -11,7 +11,7 @@ namespace WorkHub.Application.Dtos.Space
         public string SpaceNumber { get;  set; } = null!;
         public string? Description { get;  set; }
 
-
+        [EnumDataType(typeof(SpaceType))]
         public SpaceType Type { get;  set; }
 
         [Required(ErrorMessage = "Minimum capacity is required.")]
@@ -27,5 +27,8 @@ namespace WorkHub.Application.Dtos.Space
         [Range(0.01, double.MaxValue, ErrorMessage = "Daily price must be greater than 0.")]
         public decimal DailyPrice { get;  set; }
 
+        public List<Guid> FeatureIds { get; set; } = new List<Guid>();
     }
+
+    
 }

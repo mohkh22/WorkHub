@@ -126,47 +126,25 @@ namespace WorkHub.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETUTCDATE()");
 
-                    b.Property<Guid>("FeatureId1")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SpaceId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("SpaceId", "FeatureId");
 
                     b.HasIndex("FeatureId");
-
-                    b.HasIndex("FeatureId1");
-
-                    b.HasIndex("SpaceId1");
 
                     b.ToTable("SpaceFeatures");
                 });
 
             modelBuilder.Entity("WorkHub.Domain.Entities.SpaceFeature", b =>
                 {
-                    b.HasOne("WorkHub.Domain.Entities.Feature", null)
+                    b.HasOne("WorkHub.Domain.Entities.Feature", "Feature")
                         .WithMany("SpaceFeatures")
                         .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("WorkHub.Domain.Entities.Feature", "Feature")
-                        .WithMany()
-                        .HasForeignKey("FeatureId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WorkHub.Domain.Entities.Space", null)
+                    b.HasOne("WorkHub.Domain.Entities.Space", "Space")
                         .WithMany("SpaceFeatures")
                         .HasForeignKey("SpaceId")
                         .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("WorkHub.Domain.Entities.Space", "Space")
-                        .WithMany()
-                        .HasForeignKey("SpaceId1")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Feature");

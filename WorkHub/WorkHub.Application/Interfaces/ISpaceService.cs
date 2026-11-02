@@ -8,7 +8,7 @@ namespace WorkHub.Application.Interfaces
 
         Task<List<SpaceResponse>> GetAllSpacesAsync(int page=1, int pageSize =10);
 
-        Task<SpaceResponse> GetSpaceById(Guid id); 
+        Task<SpaceResponse> GetSpaceById(Guid id, string includeProperties = ""); 
 
         Task SoftDeleteAsync(Guid Id);
         Task UpdateSpaceAsync(Guid id, UpdateSpaceRequest updateSpaceRequest); 

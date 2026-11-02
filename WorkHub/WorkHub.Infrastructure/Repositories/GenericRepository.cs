@@ -54,9 +54,14 @@ namespace WorkHub.Infrastructure.Repositories
             }
         }
 
-        public async Task<T?> GetByIdAsync(TKey id)
+        public async Task<T?> GetByIdAsync(TKey id, string includeProperties = "")
         {
-          T? result = await _dbContext.Set<T>().FirstOrDefaultAsync(entity=>EF.Property<TKey>(entity,"Id")!.Equals(id));
+            T? result; 
+            if (!String.IsNullOrWhiteSpace(includeProperties))
+           result = await _dbContext.Set<T>().Include(includeProperties).FirstOrDefaultAsync(entity=>EF.Property<TKey>(entity,"Id")!.Equals(id));
+          else
+           result = await _dbContext.Set<T>().FirstOrDefaultAsync(entity=>EF.Property<TKey>(entity,"Id")!.Equals(id));
+
             return result;
         }
 

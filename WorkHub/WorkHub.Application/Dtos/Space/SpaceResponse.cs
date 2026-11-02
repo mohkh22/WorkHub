@@ -1,5 +1,4 @@
 ﻿using WorkHub.Domain.Enums;
-using WorkHub.Domain.Entities;
 
 namespace WorkHub.Application.Dtos.Space
 {
@@ -17,6 +16,9 @@ namespace WorkHub.Application.Dtos.Space
         public int MaxCapacity { get;  set; }
         public decimal HourlyPrice { get;  set; }
         public decimal DailyPrice { get;  set; }
+
+        public List<Guid> FeatureIds { get; set; } = new();
+        public List<string> FeatureNames {get; set; } = new();
 
     }
 
@@ -38,7 +40,15 @@ namespace WorkHub.Application.Dtos.Space
                 MinCapacity = space.MinCapacity,
                 MaxCapacity = space.MaxCapacity,
                 HourlyPrice = space.HourlyPrice,
-                DailyPrice = space.DailyPrice
+                DailyPrice = space.DailyPrice,
+                FeatureIds = space.SpaceFeatures
+                            .Select(sf => sf.FeatureId)
+                            .ToList(),
+                FeatureNames = space.SpaceFeatures
+                            .Select(sf => sf.Feature?.Name)
+                            .ToList()
+
+
             };
         }
 
@@ -55,8 +65,8 @@ namespace WorkHub.Application.Dtos.Space
                 MinCapacity = spaceResponse.MinCapacity,
                 MaxCapacity=spaceResponse.MaxCapacity,
                 HourlyPrice=spaceResponse.HourlyPrice,
-                DailyPrice=spaceResponse.DailyPrice
-
+                DailyPrice=spaceResponse.DailyPrice,
+                FeatureIds = spaceResponse.FeatureIds
 
             }; 
         }

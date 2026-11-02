@@ -14,11 +14,12 @@ namespace WorkHub.Infrastructure.Configurations
                 x.FeatureId
             });
 
-            builder.HasOne<Space>()
+            builder.HasOne(x=>x.Space)
                 .WithMany(x=>x.SpaceFeatures)
                 .HasForeignKey(x=>x.SpaceId)
                 .OnDelete(DeleteBehavior.NoAction); 
-            builder.HasOne<Feature>()
+
+            builder.HasOne(x=>x.Feature)
                 .WithMany(x => x.SpaceFeatures)
                 .HasForeignKey(x=>x.FeatureId)
                 .OnDelete(DeleteBehavior.NoAction);

@@ -1,5 +1,5 @@
-﻿@using WorkHub.Application.Dtos.Space
-@model UpdateSpaceRequest
+﻿@using WorkHub.Application.ViewModels
+@model UpdateSpaceViewModel
 @{
     ViewBag.Title = "Update Space"; 
 }
@@ -7,18 +7,31 @@
 <form asp-controller="Spaces" asp-action="Update" method="post">
     @Html.AntiForgeryToken();
     <input value="@ViewBag.SpaceId" name="id" hidden="hidden" />
-    <input asp-for="SpaceNumber"  />
-    <textarea asp-for="Description" ></textarea>
+    <input asp-for="UpdateSpaceRequest.SpaceNumber"  />
+    <textarea asp-for="UpdateSpaceRequest.Description" ></textarea>
 
-    <select asp-for="Type" asp-items="ViewBag.SpaceTypeSelectList">
+    <select asp-for="UpdateSpaceRequest.Type" asp-items="ViewBag.SpaceTypeSelectList">
         <option value="" selected>Select Space Type</option>
     </select>
 
-    <input asp-for="MinCapacity" />
-    <input asp-for="MaxCapacity" />
-    <input asp-for="HourlyPrice" />
-    <input asp-for="DailyPrice" name="DailyPrice" />
-
+    <input asp-for="UpdateSpaceRequest.MinCapacity" />
+    <input asp-for="UpdateSpaceRequest.MaxCapacity" />
+    <input asp-for="UpdateSpaceRequest.HourlyPrice" />
+    <input asp-for="UpdateSpaceRequest.DailyPrice"  />
+    
+    <select asp-for="UpdateSpaceRequest.FeatureIds" multiple>
+        @foreach (var feature in Model.FeatureResponses)
+        {
+            if (Model.UpdateSpaceRequest.FeatureIds.Contains(feature.Id)){
+                
+              <option value="@feature.Id" selected>@feature.Name</option>
+            }
+          else
+            {
+               <option value="@feature.Id">@feature.Name</option>
+            }
+        }
+    </select>
 
     <button type="submit" >Save</button>
 
