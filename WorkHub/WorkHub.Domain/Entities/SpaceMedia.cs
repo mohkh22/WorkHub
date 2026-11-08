@@ -15,6 +15,8 @@ namespace WorkHub.Domain.Entities
 
         public DateTime CreatedAtUtc { get; private set; }
 
+        public Space Space { get; private set; } = null!;
+
         private SpaceMedia(Guid spaceId , MediaType mediaType, string mediaUrl,int displayOrder,bool isPrimary=false)
         {
             Id = Guid.NewGuid();

@@ -3,6 +3,7 @@ using WorkHub.Application.Interfaces;
 using WorkHub.Application.Services;
 using WorkHub.Infrastructure.Data;
 using WorkHub.Infrastructure.Repositories;
+using WorkHub.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -16,6 +17,9 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ISpaceService, SpaceService>();
 builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<ISpaceFeatureRepository, SpaceFeatureRepository>();
+builder.Services.AddScoped<IFileStorageService, FileStorageService>();
+builder.Services.AddScoped<ISpaceMediaService, SpaceMediaService>();
+
 
 
 builder.Services.AddControllersWithViews();

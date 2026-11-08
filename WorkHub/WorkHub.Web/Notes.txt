@@ -1,0 +1,8 @@
+﻿
+
+// Review Upolad file code and make sure it is secure and efficient. Here are some suggestions:
+// review the file extension and size validation logic to ensure that it is robust 
+and covers all possible edge cases. Consider using a whitelist approach for allowed 
+file types and sizes.
+
+// File Signature Validation

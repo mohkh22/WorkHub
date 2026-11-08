@@ -23,6 +23,7 @@ namespace WorkHub.Domain.Entities
         public bool IsDeleted { get; private set; }
 
         public ICollection<SpaceFeature> SpaceFeatures { get; private set; } = new List<SpaceFeature>();
+        public ICollection<SpaceMedia> spaceMedias { get; private set; } = new List<SpaceMedia>();
 
         private Space()
         {

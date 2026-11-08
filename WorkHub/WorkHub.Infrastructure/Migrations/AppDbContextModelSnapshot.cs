@@ -133,6 +133,45 @@ namespace WorkHub.Infrastructure.Migrations
                     b.ToTable("SpaceFeatures");
                 });
 
+            modelBuilder.Entity("WorkHub.Domain.Entities.SpaceMedia", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPrimary")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("MediaType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MediaUrl")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("SpaceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SpaceId")
+                        .IsUnique()
+                        .HasFilter("[IsPrimary]=1");
+
+                    b.ToTable("SpaceMedia");
+                });
+
             modelBuilder.Entity("WorkHub.Domain.Entities.SpaceFeature", b =>
                 {
                     b.HasOne("WorkHub.Domain.Entities.Feature", "Feature")
@@ -152,6 +191,17 @@ namespace WorkHub.Infrastructure.Migrations
                     b.Navigation("Space");
                 });
 
+            modelBuilder.Entity("WorkHub.Domain.Entities.SpaceMedia", b =>
+                {
+                    b.HasOne("WorkHub.Domain.Entities.Space", "Space")
+                        .WithMany("spaceMedias")
+                        .HasForeignKey("SpaceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Space");
+                });
+
             modelBuilder.Entity("WorkHub.Domain.Entities.Feature", b =>
                 {
                     b.Navigation("SpaceFeatures");
@@ -160,6 +210,8 @@ namespace WorkHub.Infrastructure.Migrations
             modelBuilder.Entity("WorkHub.Domain.Entities.Space", b =>
                 {
                     b.Navigation("SpaceFeatures");
+
+                    b.Navigation("spaceMedias");
                 });
 #pragma warning restore 612, 618
         }

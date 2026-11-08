@@ -170,3 +170,4 @@ F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHu
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\obj\Debug\net10.0\WorkHub.Web.RazorAssemblyInfo.cache
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\obj\Debug\net10.0\WorkHub.Web.RazorAssemblyInfo.cs
 F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\obj\Debug\net10.0\WorkHub.Web.sourcelink.json
+F:\fullstack\BackEnd\Projects\MVC_Projects\Coworking Space System\Project\WorkHub\WorkHub.Web\bin\Debug\net10.0\WorkHub.Web.staticwebassets.runtime.json

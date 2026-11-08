@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using WorkHub.Application.Interfaces;
 using WorkHub.Domain.Entities;
 using WorkHub.Infrastructure.Data;
@@ -17,6 +18,17 @@ namespace WorkHub.Infrastructure.Repositories
         {
             _dbContext.Set<T>().Add(entity);
             return Task.CompletedTask;
+        }
+
+        public async Task<int> CountAsync(Expression<Func<T, bool>>? filter = null)
+        {
+           IQueryable<T> query = _dbContext.Set<T>();
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            return await query.CountAsync();
         }
 
         public async Task Delete(TKey id)
@@ -41,7 +53,7 @@ namespace WorkHub.Infrastructure.Repositories
             }
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(int page = 1, int pageSize = 10)
+        public async Task<IEnumerable<T>> GetAllAsync(int page = 1, int pageSize = 10, Expression<Func<T, bool>>? filter = null)
         {
             if(page <= 0 || pageSize <= 0)
             {
@@ -49,8 +61,12 @@ namespace WorkHub.Infrastructure.Repositories
             }
             else
             {
-               
-              return await _dbContext.Set<T>().Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+               if(filter != null)
+                {
+                    return await _dbContext.Set<T>().Where(filter).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+                }
+                else
+                    return await _dbContext.Set<T>().Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
             }
         }
 

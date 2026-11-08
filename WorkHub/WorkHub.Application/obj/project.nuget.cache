@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "hwY1hLF7b6I=",
+  "dgSpecHash": "n4T0E95Jy40=",
   "success": true,
   "projectFilePath": "F:\\fullstack\\BackEnd\\Projects\\MVC_Projects\\Coworking Space System\\Project\\WorkHub\\WorkHub.Application\\WorkHub.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Mohamed\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\Mohamed\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
